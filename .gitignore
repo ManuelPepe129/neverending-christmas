@@ -30,9 +30,18 @@
 /[Aa]ssets/Plugins/Editor/JetBrains*
 # Jetbrains Rider personal-layer settings
 *.DotSettings.user
+.idea/
+Assets/Plugins/Editor/JetBrains*
+
+# Jetbrain Rider Cache
+.idea/
+Assets/Plugins/Editor/JetBrains*
 
 # Visual Studio cache directory
 .vs/
+
+# Visual Studio Code
+.vscode/
 
 # Gradle cache directory
 .gradle/
