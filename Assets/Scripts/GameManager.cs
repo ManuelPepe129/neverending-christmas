@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private float dayDuration = 10.0f;
     private float _dayDuration;
@@ -18,7 +18,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private int _totalGifts = 0;
     private int _giftsCollected = 0;
 
-    void Start()
+    private void Start()
     {
         // TODO: Move to UI
         StartGame();
