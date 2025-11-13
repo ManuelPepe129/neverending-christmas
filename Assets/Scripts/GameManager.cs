@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
     private Coroutine _dayTimerCoroutine;
 
     [SerializeField] private GameObject[] giftSpawnPositions;
-    [SerializeField] private GameObject giftToSpawn;
+    [SerializeField] private GameObject giftPrefab;
     [SerializeField] private int numberOfGiftsToSpawn;
     
     private int _totalGifts = 0;
     private int _giftsCollected = 0;
 
-    void Start()
+    private void Start()
     {
         // TODO: Move to UI
         StartGame();
@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviour
         {
             var positionIndex = Random.Range(0, tmpGiftSpawnPositions.Count);
             var spawnPosition = tmpGiftSpawnPositions[positionIndex].transform.position;
-            Instantiate(giftToSpawn, spawnPosition, Quaternion.identity);
+            Instantiate(giftPrefab, spawnPosition, Quaternion.identity);
             tmpGiftSpawnPositions.RemoveAt(positionIndex);
             giftSpawned++;
         }
         
-        // Start Waves
+        // TODO: Start Waves
     }
 
     private IEnumerator DayTimer()
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         while (_currentTime <= _dayDuration)
         {
             _currentTime += Time.deltaTime;
-            yield return new WaitForSeconds(1.0f);
+            yield return null;
         }
         // TODO: Game Over
         Debug.Log("Current day ended");
@@ -75,8 +75,8 @@ public class GameManager : MonoBehaviour
     
     public void OnPlayerDeath(bool isDeath)
     {
-        // Play Game Over audio
-        // Update UI
+        // TODO: Play Game Over audio
+        // TODO: Update UI
         StopCoroutine(_dayTimerCoroutine);
         throw new NotImplementedException("OnPlayerDeath event not implemented yet.");
         Time.timeScale = 0; // Freeze the game
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void OnLevelCompleted()
     {
-        // Play Win audio
+        // TODO: Play Win audio
         StopCoroutine(_dayTimerCoroutine);
         throw new NotImplementedException("OnLevelCompleted event not implemented yet.");
         Time.timeScale = 0; // Freeze the game
