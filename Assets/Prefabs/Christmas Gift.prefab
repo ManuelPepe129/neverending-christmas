@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5959183057469809263}
   - component: {fileID: 3142641762419670819}
   - component: {fileID: -7625701957555558177}
+  - component: {fileID: 6789460013446860903}
   m_Layer: 0
   m_Name: Christmas Gift
   m_TagString: Untagged
@@ -199,6 +200,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ef1625c71f41040bcc32e358d70b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectedEffect: {fileID: 0}
+--- !u!65 &6789460013446860903
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310791910588941242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.027400821, y: 0.030189281, z: 0.026358563}
+  m_Center: {x: -0.00014769792, y: 0.00048140407, z: -0.007619274}
 --- !u!1 &6746169385550279014
 GameObject:
   m_ObjectHideFlags: 0
