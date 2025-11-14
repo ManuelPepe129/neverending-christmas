@@ -51,4 +51,9 @@ public class PlayerController : MonoBehaviour
     {
         _playerControls.Disable();
     }
+
+    public void OnDeath()
+    {
+        throw  new NotImplementedException("Player OnDeath not implemented");
+    }
 }
