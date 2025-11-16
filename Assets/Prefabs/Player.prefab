@@ -291,6 +291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  mainCamera: {fileID: 3102652480003953818}
+  weaponPrefab: {fileID: 6234601427178294628, guid: 291694e1185ce3349af2537dcd9c8fe7, type: 3}
+  attackCooldown: 3
 --- !u!114 &485541332556461340
 MonoBehaviour:
   m_ObjectHideFlags: 0
