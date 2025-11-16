@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Ghost_LostHope_Body
+  m_Name: M_Ghost_Sadness_Body
   m_Shader: {fileID: -6465566751694194690, guid: c73f1e97705f5434581edd5784200770, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -121,11 +121,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0.8509804}
+    - _BaseColor: {r: 0.06773225, g: 0.34938627, b: 0.5698112, a: 0.8509804}
     - _Color: {r: 0.12156855, g: 0.16078424, b: 0.21568617, a: 0.8509804}
     - _EmissionColor: {r: 0.13584876, g: 0.13584876, b: 0.13584876, a: 1}
     - _Ghost_BaseColor: {r: 0.17735845, g: 0.17735845, b: 0.17735845, a: 1}
-    - _GlowColor: {r: 0.6754716, g: 0.6754716, b: 0.6754716, a: 1}
+    - _GlowColor: {r: 0.18199998, g: 0.81284094, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
