@@ -26,6 +26,11 @@ public class HealthComponent : MonoBehaviour
         _currentHealth = maxHealth;
     }
 
+    public void TakeDamage(float damage)
+    {
+        OnTakeDamage(damage);
+    }
+
     private void OnTakeDamage(float damage)
     {
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0f, maxHealth);
