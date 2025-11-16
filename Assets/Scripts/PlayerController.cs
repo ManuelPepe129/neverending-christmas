@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     private InputSystem_Actions _playerControls;
     
-    [SerializeField] private Camera mainCamera;
+    private Camera mainCamera;
 
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private float attackCooldown = 3;
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
         // Setup Attack controls
         _playerControls.Player.Attack.started += _ => StartAttacking();
         _playerControls.Player.Attack.canceled += _ => StopAttacking();
+        
+        mainCamera = FindFirstObjectByType<Camera>();
     }
 
 
