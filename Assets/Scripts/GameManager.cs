@@ -11,12 +11,22 @@ public class GameManager : MonoBehaviour
     private float _currentTime;
     private Coroutine _dayTimerCoroutine;
 
+    // Gifts management
     [SerializeField] private GameObject[] giftSpawnPositions;
     [SerializeField] private GameObject giftPrefab;
-    [SerializeField] private int numberOfGiftsToSpawn;
+    [SerializeField] private int numberOfGiftsToSpawn = 3;
     
+    // Enemies management
+    [SerializeField] private GameObject[] enemySpawnPositions;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private int numberOfEnemiesToSpawn = 3;
+    
+    // Gifts management
     private int _totalGifts = 0;
     private int _giftsCollected = 0;
+    
+    // Enemies management
+    private int _totalEnemies = 0;
 
     private void Start()
     {
@@ -24,27 +34,47 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
-    void StartGame()
+    private void StartGame()
     {
         // Start timer
         _dayDuration = dayDuration * 60f; // Convert minutes to seconds
         _currentTime = 0f;
         _dayTimerCoroutine = StartCoroutine(DayTimer());
         
-        // Spawn gifts
+        SpawnGifts();
+        
+        // TODO: Start Waves
+        SpawnEnemies();
+    }
+
+    private void SpawnGifts()
+    {
         var tmpGiftSpawnPositions = new List<GameObject>(giftSpawnPositions);
         if (numberOfGiftsToSpawn > giftSpawnPositions.Length) numberOfGiftsToSpawn = giftSpawnPositions.Length;
-        int giftSpawned = 0;
-        while (giftSpawned < numberOfGiftsToSpawn)
+        var giftsSpawned = 0;
+        while (giftsSpawned < numberOfGiftsToSpawn)
         {
             var positionIndex = Random.Range(0, tmpGiftSpawnPositions.Count);
             var spawnPosition = tmpGiftSpawnPositions[positionIndex].transform.position;
             Instantiate(giftPrefab, spawnPosition, Quaternion.identity);
             tmpGiftSpawnPositions.RemoveAt(positionIndex);
-            giftSpawned++;
+            giftsSpawned++;
         }
-        
-        // TODO: Start Waves
+    }
+
+    private void SpawnEnemies()
+    {
+        var tmpEnemySpawnPositions = new List<GameObject>(enemySpawnPositions);
+        if (numberOfEnemiesToSpawn > enemySpawnPositions.Length) numberOfEnemiesToSpawn = enemySpawnPositions.Length;
+        var enemiesSpawned = 0;
+        while (enemiesSpawned < numberOfEnemiesToSpawn)
+        {
+            var positionIndex = Random.Range(0, tmpEnemySpawnPositions.Count);
+            var spawnPosition = tmpEnemySpawnPositions[positionIndex].transform.position;
+            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            tmpEnemySpawnPositions.RemoveAt(positionIndex);
+            enemiesSpawned++;
+        }
     }
 
     private IEnumerator DayTimer()
@@ -61,10 +91,15 @@ public class GameManager : MonoBehaviour
     public void OnGiftCollected()
     {
         _giftsCollected++;
+        
+        numberOfEnemiesToSpawn = (int)(Math.Log(numberOfEnemiesToSpawn) / Math.Log(2));
+        // TODO: empowerment
+        SpawnEnemies();
 
         if (_giftsCollected == _totalGifts)
         {
             // TODO: Spawn Boss wave
+            SpawnBossWave();
         }
     }
 
