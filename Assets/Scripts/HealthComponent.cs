@@ -28,24 +28,25 @@ public class HealthComponent : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        OnTakeDamage(damage);
-    }
-
-    private void OnTakeDamage(float damage)
-    {
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0f, maxHealth);
+        print(_currentHealth);
         if (_currentHealth <= 0)
         {
-            OnDeath();
+            deathEvent.Invoke();
         }
         else
         {
             damageEvent.Invoke(damage);
         }
     }
+
+    private void OnTakeDamage(float damage)
+    {
+        // Event handler assigned in Unity Inspector
+    }
     
     private void OnDeath()
     {
-        deathEvent.Invoke();
+        // Event handler assigned in Unity Inspector
     }
 }
