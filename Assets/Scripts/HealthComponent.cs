@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class HealthComponent : MonoBehaviour
@@ -7,6 +7,13 @@ public class HealthComponent : MonoBehaviour
     private float _currentHealth;
     [SerializeField] private UnityEvent<float> damageEvent;
     [SerializeField] private UnityEvent deathEvent;
+
+    // invulnerability set up
+    [SerializeField] private float invulnerabilityTime = 1.5f;
+
+    private bool _isInvulnerable = false;
+    public bool IsInvulnerable => _isInvulnerable;
+    public float CurrentHealth => _currentHealth;   // ← ADD THIS
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -28,7 +35,18 @@ public class HealthComponent : MonoBehaviour
 
     private void OnTakeDamage(float damage)
     {
+
+        // prevent damage if currently invulnerable
+
+        if (_isInvulnerable) {
+            print("now invulnerable");
+            return;
+        }
+
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0f, maxHealth);
+
+        ActivateInvulnerability(invulnerabilityTime);
+
         if (_currentHealth <= 0)
         {
             OnDeath();
@@ -42,5 +60,26 @@ public class HealthComponent : MonoBehaviour
     private void OnDeath()
     {
         deathEvent.Invoke();
+    }
+
+    
+    // PUBLIC INVULNERABILITY API
+ 
+    public void ActivateInvulnerability()
+    {
+        if (!_isInvulnerable)
+            StartCoroutine(InvulnerabilityRoutine(invulnerabilityTime));
+    }
+
+    public void ActivateInvulnerability(float duration)
+    {
+        StartCoroutine(InvulnerabilityRoutine(duration));
+    }
+
+    private System.Collections.IEnumerator InvulnerabilityRoutine(float duration)
+    {
+        _isInvulnerable = true;
+        yield return new WaitForSeconds(duration);
+        _isInvulnerable = false;
     }
 }
