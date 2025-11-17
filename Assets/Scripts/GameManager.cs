@@ -22,11 +22,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int numberOfEnemiesToSpawn = 3;
     
     // Gifts management
-    private int _totalGifts = 0;
     private int _giftsCollected = 0;
     
     // Enemies management
-    private int _totalEnemies = 0;
+    private int _enemiesSpawned = 0;
 
     private void Start()
     {
@@ -43,8 +42,7 @@ public class GameManager : MonoBehaviour
         
         SpawnGifts();
         
-        // TODO: Start Waves
-        SpawnEnemies();
+        InvokeRepeating(nameof(SpawnEnemies), 0.5f, 15f);
     }
 
     private void SpawnGifts()
@@ -66,14 +64,13 @@ public class GameManager : MonoBehaviour
     {
         var tmpEnemySpawnPositions = new List<GameObject>(enemySpawnPositions);
         if (numberOfEnemiesToSpawn > enemySpawnPositions.Length) numberOfEnemiesToSpawn = enemySpawnPositions.Length;
-        var enemiesSpawned = 0;
-        while (enemiesSpawned < numberOfEnemiesToSpawn)
+        while (_enemiesSpawned < numberOfEnemiesToSpawn)
         {
             var positionIndex = Random.Range(0, tmpEnemySpawnPositions.Count);
             var spawnPosition = tmpEnemySpawnPositions[positionIndex].transform.position;
             Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             tmpEnemySpawnPositions.RemoveAt(positionIndex);
-            enemiesSpawned++;
+            _enemiesSpawned++;
         }
     }
 
@@ -96,7 +93,7 @@ public class GameManager : MonoBehaviour
         // TODO: empowerment
         SpawnEnemies();
 
-        if (_giftsCollected == _totalGifts)
+        if (_giftsCollected == numberOfGiftsToSpawn)
         {
             // TODO: Spawn Boss wave
             SpawnBossWave();
