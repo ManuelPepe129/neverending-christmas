@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 645539344}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   - {fileID: 1061907008}
   enemyPrefab: {fileID: 3971976483952842919, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
   numberOfEnemiesToSpawn: 3
+  enemiesSpawned: 0
 --- !u!4 &645539345
 Transform:
   m_ObjectHideFlags: 0

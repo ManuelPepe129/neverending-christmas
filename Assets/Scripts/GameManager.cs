@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -14,18 +15,20 @@ public class GameManager : MonoBehaviour
     // Gifts management
     [SerializeField] private GameObject[] giftSpawnPositions;
     [SerializeField] private GameObject giftPrefab;
-    [SerializeField] private int numberOfGiftsToSpawn = 3;
     
     // Enemies management
     [SerializeField] private GameObject[] enemySpawnPositions;
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private int numberOfEnemiesToSpawn = 3;
     
     // Gifts management
+    private int _numberOfGiftsToSpawn = 3;
     private int _giftsCollected = 0;
     
     // Enemies management
-    private int _enemiesSpawned = 0;
+    private int _numberOfEnemiesToSpawn;
+    private const int EnemyBaseNumber = 3;
+    private const float EnemyIncrementFactor = 1.55f;
+    public int enemiesSpawned = 0;
 
     private void Start()
     {
@@ -41,16 +44,17 @@ public class GameManager : MonoBehaviour
         _dayTimerCoroutine = StartCoroutine(DayTimer());
         
         SpawnGifts();
-        
-        InvokeRepeating(nameof(SpawnEnemies), 0.5f, 15f);
+
+        _numberOfEnemiesToSpawn = EnemyBaseNumber;
+        InvokeRepeating(nameof(SpawnEnemies), 0.5f, 10f);
     }
 
     private void SpawnGifts()
     {
         var tmpGiftSpawnPositions = new List<GameObject>(giftSpawnPositions);
-        if (numberOfGiftsToSpawn > giftSpawnPositions.Length) numberOfGiftsToSpawn = giftSpawnPositions.Length;
+        if (_numberOfGiftsToSpawn > giftSpawnPositions.Length) _numberOfGiftsToSpawn = giftSpawnPositions.Length;
         var giftsSpawned = 0;
-        while (giftsSpawned < numberOfGiftsToSpawn)
+        while (giftsSpawned < _numberOfGiftsToSpawn)
         {
             var positionIndex = Random.Range(0, tmpGiftSpawnPositions.Count);
             var spawnPosition = tmpGiftSpawnPositions[positionIndex].transform.position;
@@ -62,15 +66,18 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
+        Debug.Log("Spawning enemies");
+        
+        Debug.Log("Enemies to spawn: " + _numberOfEnemiesToSpawn);
         var tmpEnemySpawnPositions = new List<GameObject>(enemySpawnPositions);
-        if (numberOfEnemiesToSpawn > enemySpawnPositions.Length) numberOfEnemiesToSpawn = enemySpawnPositions.Length;
-        while (_enemiesSpawned < numberOfEnemiesToSpawn)
+        if (_numberOfEnemiesToSpawn > enemySpawnPositions.Length) _numberOfEnemiesToSpawn = enemySpawnPositions.Length;
+        while (enemiesSpawned < _numberOfEnemiesToSpawn)
         {
             var positionIndex = Random.Range(0, tmpEnemySpawnPositions.Count);
             var spawnPosition = tmpEnemySpawnPositions[positionIndex].transform.position;
             Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             tmpEnemySpawnPositions.RemoveAt(positionIndex);
-            _enemiesSpawned++;
+            enemiesSpawned++;
         }
     }
 
@@ -89,11 +96,11 @@ public class GameManager : MonoBehaviour
     {
         _giftsCollected++;
         
-        numberOfEnemiesToSpawn = (int)(Math.Log(numberOfEnemiesToSpawn) / Math.Log(2));
         // TODO: empowerment
+        _numberOfEnemiesToSpawn = Mathf.RoundToInt(EnemyBaseNumber * Mathf.Pow(EnemyIncrementFactor, _giftsCollected));
         SpawnEnemies();
 
-        if (_giftsCollected == numberOfGiftsToSpawn)
+        if (_giftsCollected == _numberOfGiftsToSpawn)
         {
             // TODO: Spawn Boss wave
             SpawnBossWave();
