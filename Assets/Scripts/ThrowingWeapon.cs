@@ -33,6 +33,7 @@ public class ThrowingWeapon : MonoBehaviour
         }
         
         var targetPosition = _goingBack ? _playerTransform.position : _targetPosition;
+        // TODO: rotate player according to mouse click position
         transform.position = Vector3.MoveTowards(transform.position, targetPosition,throwSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, _playerTransform.position) <= 0.5f && _goingBack)
@@ -44,10 +45,8 @@ public class ThrowingWeapon : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         var enemy = other.gameObject.GetComponent<EnemyFollow>();
-        if (enemy)
-        {
-            var enemyHealth = enemy.gameObject.GetComponent<HealthComponent>();
-            enemyHealth?.TakeDamage(damage);
-        }
+        if (!enemy) return;
+        var enemyHealth = enemy.gameObject.GetComponent<HealthComponent>();
+        enemyHealth?.TakeDamage(damage);
     }
 }
