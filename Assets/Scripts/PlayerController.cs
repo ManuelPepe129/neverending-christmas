@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //RotateTowardsMouse();
+        RotateTowardsMouse();
         Move();
     }
     
@@ -81,10 +81,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (_movement != Vector3.zero)
-        {
-            transform.forward = _movement;
-        }
         _rigidBody.MovePosition(_rigidBody.position + _movement * (_currentSpeed * Time.fixedDeltaTime));
     }
 
@@ -108,7 +104,6 @@ public class PlayerController : MonoBehaviour
         if (_attackButtonDown && _canAttack)
         {
             _canAttack = false;
-            RotateTowardsMouse(); // TODO: sistemare per far funzionare veramente
             // Spawn weapon prefab
             var weaponSpawnPosition = new Vector3(_rigidBody.position.x, _rigidBody.position.y + 0.86f, _rigidBody.position.z);
             Instantiate(weaponPrefab, weaponSpawnPosition, _rigidBody.rotation);
