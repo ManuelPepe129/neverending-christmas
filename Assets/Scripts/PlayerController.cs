@@ -11,17 +11,20 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     private InputSystem_Actions _playerControls;
     
-    private Camera mainCamera;
+    private Camera _mainCamera;
 
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private float attackCooldown = 3;
     private bool _attackButtonDown = false;
     private bool _canAttack = true;
+    
+    private HealthComponent _healthComponent;
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
         _playerControls = new InputSystem_Actions();
+        _healthComponent = GetComponent<HealthComponent>();
     }
 
     private void Start()
@@ -32,7 +35,7 @@ public class PlayerController : MonoBehaviour
         _playerControls.Player.Attack.started += _ => StartAttacking();
         _playerControls.Player.Attack.canceled += _ => StopAttacking();
         
-        mainCamera = FindFirstObjectByType<Camera>();
+        _mainCamera = FindFirstObjectByType<Camera>();
     }
 
 
@@ -54,13 +57,13 @@ public class PlayerController : MonoBehaviour
         Vector2 mouseScreenPos = _playerControls.Player.Rotate.ReadValue<Vector2>();
 
         // Player position in screen space
-        Vector3 playerScreenPos = mainCamera.WorldToScreenPoint(_rigidBody.position);
+        Vector3 playerScreenPos = _mainCamera.WorldToScreenPoint(_rigidBody.position);
 
         // Use the player's depth (z in screen-space)
         Vector3 mouseScreenWithDepth = new Vector3(mouseScreenPos.x, mouseScreenPos.y, playerScreenPos.z);
 
         // Convert to world position
-        Vector3 worldPos = mainCamera.ScreenToWorldPoint(mouseScreenWithDepth);
+        Vector3 worldPos = _mainCamera.ScreenToWorldPoint(mouseScreenWithDepth);
 
         // Direction from player to mouse in world-space
         Vector3 rotateDirection = (worldPos - _rigidBody.position);
@@ -125,5 +128,14 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         _canAttack = true;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("Enemy") && _healthComponent != null)
+        {
+            _healthComponent.TakeDamage(10);
+        }
     }
 }

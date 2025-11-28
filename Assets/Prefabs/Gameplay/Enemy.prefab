@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7026619190048391243}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,12 +101,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 3971976483952842919}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.8
+  m_Radius: 0.71
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2.5
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412588b3ea2c4194381233a8d3614662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3315396960560505682, guid: db487d0eec5633e4f9f8336a59144b21, type: 3}
 --- !u!114 &7341077745853708946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  currentHealth: 0
   damageEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -194,7 +194,7 @@ Rigidbody:
   m_ImplicitCom: 0
   m_ImplicitTensor: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -217,7 +217,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7012162
+  m_Radius: 0.86
   m_Height: 1.7955503
   m_Direction: 1
-  m_Center: {x: -0.0013073087, y: 0.9047494, z: -0.010930091}
+  m_Center: {x: -0.0013073087, y: 0.9047494, z: -0.0019471645}
