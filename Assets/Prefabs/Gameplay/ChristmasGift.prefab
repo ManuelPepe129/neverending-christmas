@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2735488960198875026}
   - component: {fileID: 5584422805574086586}
   - component: {fileID: 6300541270358727964}
+  - component: {fileID: -3176304871282518491}
+  - component: {fileID: -4594888116175679954}
   m_Layer: 0
   m_Name: ChristmasGift
   m_TagString: Untagged
@@ -89,6 +91,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-3176304871282518491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952654363178422891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ef1625c71f41040bcc32e358d70b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedEffect: {fileID: 5038190601561595115}
+--- !u!65 &-4594888116175679954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952654363178422891}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0959783, y: 2.6358557, z: 2.3755534}
+  m_Center: {x: 0.00000011920928, y: 1.3179278, z: -0.0011057853}
 --- !u!1001 &3579324188544845714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,6 +201,11 @@ PrefabInstance:
 --- !u!4 &1702900803688055851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2742053496829248441, guid: be1d0549d27d64746bd40c98258bc545, type: 3}
+  m_PrefabInstance: {fileID: 3579324188544845714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5038190601561595115 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8378788546041322361, guid: be1d0549d27d64746bd40c98258bc545, type: 3}
   m_PrefabInstance: {fileID: 3579324188544845714}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6221662673581349242

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     
     // Enemies management
     [SerializeField] private GameObject[] enemySpawnPositions;
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject[] enemyPrefabs;
     
     // Gifts management
     private int _numberOfGiftsToSpawn = 3;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     
     // Enemies management
     private int _numberOfEnemiesToSpawn;
-    private const int EnemyBaseNumber = 3;
+    private const int EnemyBaseNumber = 5;
     private const float EnemyIncrementFactor = 1.55f;
     public int enemiesSpawned = 0;
 
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         SpawnGifts();
 
         _numberOfEnemiesToSpawn = EnemyBaseNumber;
-        InvokeRepeating(nameof(SpawnEnemies), 0.5f, 10f);
+        InvokeRepeating(nameof(SpawnEnemies), 0.5f, 5f);
     }
 
     private void SpawnGifts()
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         {
             var positionIndex = Random.Range(0, tmpEnemySpawnPositions.Count);
             var spawnPosition = tmpEnemySpawnPositions[positionIndex].transform.position;
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(enemyPrefabs[_giftsCollected], spawnPosition, Quaternion.identity);
             tmpEnemySpawnPositions.RemoveAt(positionIndex);
             enemiesSpawned++;
         }
@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
         _giftsCollected++;
         
         // TODO: empowerment
+        
         _numberOfEnemiesToSpawn = Mathf.RoundToInt(EnemyBaseNumber * Mathf.Pow(EnemyIncrementFactor, _giftsCollected));
         SpawnEnemies();
 
