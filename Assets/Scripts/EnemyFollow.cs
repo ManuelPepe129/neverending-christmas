@@ -10,6 +10,11 @@ public class EnemyFollow : MonoBehaviour
     void Start()
     {
         _enemy = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null)
+        {
+            Debug.LogError("Player not found");
+        }
     }
 
     // Update is called once per frame

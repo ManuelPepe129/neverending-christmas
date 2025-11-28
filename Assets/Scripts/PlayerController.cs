@@ -72,10 +72,7 @@ public class PlayerController : MonoBehaviour
             _rigidBody.MoveRotation(targetRot);
         }
     }
-
-
     
-
     private void GetPlayerInput()
     {
         var movement2D = _playerControls.Player.Move.ReadValue<Vector2>();
@@ -108,7 +105,8 @@ public class PlayerController : MonoBehaviour
         {
             _canAttack = false;
             // Spawn weapon prefab
-            Instantiate(weaponPrefab, _rigidBody.position, _rigidBody.rotation);
+            var weaponSpawnPosition = new Vector3(_rigidBody.position.x, _rigidBody.position.y + 0.86f, _rigidBody.position.z);
+            Instantiate(weaponPrefab, weaponSpawnPosition, _rigidBody.rotation);
             StartCoroutine(AttackCooldownRoutine());
         }
     }
