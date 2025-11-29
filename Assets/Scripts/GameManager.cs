@@ -15,15 +15,15 @@ public class GameManager : MonoBehaviour
     // Gifts management
     [SerializeField] private GameObject[] giftSpawnPositions;
     [SerializeField] private GameObject giftPrefab;
-    
+
     // Enemies management
     [SerializeField] private GameObject[] enemySpawnPositions;
     [SerializeField] private GameObject[] enemyPrefabs;
-    
+
     // Gifts management
     private int _numberOfGiftsToSpawn = 3;
     private int _giftsCollected = 0;
-    
+
     // Enemies management
     private int _numberOfEnemiesToSpawn;
     private const int EnemyBaseNumber = 5;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         _dayDuration = dayDuration * 60f; // Convert minutes to seconds
         _currentTime = 0f;
         _dayTimerCoroutine = StartCoroutine(DayTimer());
-        
+
         SpawnGifts();
 
         _numberOfEnemiesToSpawn = EnemyBaseNumber;
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     private void SpawnEnemies()
     {
         Debug.Log("Spawning enemies");
-        
+
         Debug.Log("Enemies to spawn: " + _numberOfEnemiesToSpawn);
         var tmpEnemySpawnPositions = new List<GameObject>(enemySpawnPositions);
         if (_numberOfEnemiesToSpawn > enemySpawnPositions.Length) _numberOfEnemiesToSpawn = enemySpawnPositions.Length;
@@ -88,16 +88,17 @@ public class GameManager : MonoBehaviour
             _currentTime += Time.deltaTime;
             yield return null;
         }
+
         // TODO: Game Over
         Debug.Log("Current day ended");
     }
-    
+
     public void OnGiftCollected()
     {
         _giftsCollected++;
-        
+
         // TODO: empowerment
-        
+
         _numberOfEnemiesToSpawn = Mathf.RoundToInt(EnemyBaseNumber * Mathf.Pow(EnemyIncrementFactor, _giftsCollected));
         SpawnEnemies();
 
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         throw new NotImplementedException("SpawnBossWave not implemented yet.");
     }
-    
+
     public void OnPlayerDeath(bool isDeath)
     {
         // TODO: Play Game Over audio
@@ -128,5 +129,15 @@ public class GameManager : MonoBehaviour
         StopCoroutine(_dayTimerCoroutine);
         throw new NotImplementedException("OnLevelCompleted event not implemented yet.");
         Time.timeScale = 0; // Freeze the game
+    }
+
+    public float GetNormalizedTime()
+    {
+        return 1.0f - _currentTime / _dayDuration;
+    }
+
+    public float GetRemainingTime()
+    {
+        return _dayDuration - _currentTime;
     }
 }

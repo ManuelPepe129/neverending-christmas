@@ -770,9 +770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8690180c8ae3608468ffd4175f450b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
   weaponPrefab: {fileID: 6234601427178294628, guid: 291694e1185ce3349af2537dcd9c8fe7, type: 3}
-  attackCooldown: 3
+  attackCooldown: 2
 --- !u!114 &3146089049764388399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   damageEvent:
     m_PersistentCalls:
       m_Calls:
