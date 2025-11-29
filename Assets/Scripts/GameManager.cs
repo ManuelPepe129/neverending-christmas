@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
         // TODO: Play Game Over audio
         StopCoroutine(_dayTimerCoroutine);
         Time.timeScale = 0; // Freeze the game
+        PlayerPrefs.SetInt("GiftsCollected", _giftsCollected);
         StartCoroutine(LoadSceneCoroutine(2));
     }
 
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour
         StopCoroutine(_dayTimerCoroutine);
         Time.timeScale = 0; // Freeze the game
         // Load Win Scene
+        PlayerPrefs.SetInt("GiftsCollected", _giftsCollected);
         StartCoroutine(LoadSceneCoroutine(3));
     }
 
