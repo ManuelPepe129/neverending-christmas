@@ -5819,7 +5819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6481999536775698050, guid: 68f08d535211fac46b657383354168eb, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7474688098555784204, guid: 68f08d535211fac46b657383354168eb, type: 3}
       propertyPath: m_ReceiveGI
