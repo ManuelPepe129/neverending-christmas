@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDeath()
     {
-        throw new NotImplementedException("Player OnDeath not implemented");
+        
     }
 
     private void Attack()

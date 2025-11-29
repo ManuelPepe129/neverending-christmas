@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         throw new NotImplementedException("SpawnBossWave not implemented yet.");
     }
 
-    public void OnPlayerDeath(bool isDeath)
+    public void OnPlayerDeath()
     {
         // TODO: Play Game Over audio
         StopCoroutine(_dayTimerCoroutine);
