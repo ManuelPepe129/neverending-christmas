@@ -1,13 +1,22 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement; // serve per cambiare scena
+using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
-    public string gameSceneName; // nome della scena di gioco
+    [SerializeField] private int sceneBuildIndex;
 
     public void StartGame()
     {
-        Debug.Log($"Loading level {gameSceneName}");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
+        StartCoroutine(LoadSceneCoroutine());
+    }
+    
+    private IEnumerator LoadSceneCoroutine()
+    {
+        var asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);
+        while (asyncLoad is { isDone: false })
+        {
+            yield return null;
+        }
     }
 }

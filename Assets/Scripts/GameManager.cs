@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -32,7 +33,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // TODO: Move to UI
         StartGame();
     }
 
@@ -66,9 +66,6 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        Debug.Log("Spawning enemies");
-
-        Debug.Log("Enemies to spawn: " + _numberOfEnemiesToSpawn);
         var tmpEnemySpawnPositions = new List<GameObject>(enemySpawnPositions);
         if (_numberOfEnemiesToSpawn > enemySpawnPositions.Length) _numberOfEnemiesToSpawn = enemySpawnPositions.Length;
         while (enemiesSpawned < _numberOfEnemiesToSpawn)
@@ -89,8 +86,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        // TODO: Game Over
-        Debug.Log("Current day ended");
+        StartCoroutine(LoadSceneCoroutine(2));
     }
 
     public void OnGiftCollected()
@@ -104,7 +100,6 @@ public class GameManager : MonoBehaviour
 
         if (_giftsCollected == _numberOfGiftsToSpawn)
         {
-            // TODO: Spawn Boss wave
             SpawnBossWave();
         }
     }
@@ -117,18 +112,18 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeath(bool isDeath)
     {
         // TODO: Play Game Over audio
-        // TODO: Update UI
         StopCoroutine(_dayTimerCoroutine);
-        throw new NotImplementedException("OnPlayerDeath event not implemented yet.");
         Time.timeScale = 0; // Freeze the game
+        StartCoroutine(LoadSceneCoroutine(2));
     }
 
     public void OnLevelCompleted()
     {
         // TODO: Play Win audio
         StopCoroutine(_dayTimerCoroutine);
-        throw new NotImplementedException("OnLevelCompleted event not implemented yet.");
         Time.timeScale = 0; // Freeze the game
+        // Load Win Scene
+        StartCoroutine(LoadSceneCoroutine(3));
     }
 
     public float GetNormalizedTime()
@@ -139,5 +134,14 @@ public class GameManager : MonoBehaviour
     public float GetRemainingTime()
     {
         return _dayDuration - _currentTime;
+    }
+
+    private IEnumerator LoadSceneCoroutine(int sceneBuildIndex)
+    {
+        var asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);
+        while (asyncLoad is { isDone: false })
+        {
+            yield return null;
+        }
     }
 }
