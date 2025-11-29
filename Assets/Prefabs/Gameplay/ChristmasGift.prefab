@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2735488960198875026
 Transform:
@@ -77,7 +77,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -137,6 +137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GiftCollection
       objectReference: {fileID: 0}
+    - target: {fileID: 816290884892701775, guid: be1d0549d27d64746bd40c98258bc545, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1294124184712813146, guid: be1d0549d27d64746bd40c98258bc545, type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 0
@@ -193,6 +197,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3369383471789573676, guid: be1d0549d27d64746bd40c98258bc545, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543472811379428219, guid: be1d0549d27d64746bd40c98258bc545, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782241255287919589, guid: be1d0549d27d64746bd40c98258bc545, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -216,9 +232,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2735488960198875026}
     m_Modifications:
+    - target: {fileID: 187520530224022094, guid: 4fcf54ed606be5f439b9dd0a5cfeb7c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 767377157649324197, guid: 4fcf54ed606be5f439b9dd0a5cfeb7c9, type: 3}
       propertyPath: m_Name
       value: GiftGlowAura
+      objectReference: {fileID: 0}
+    - target: {fileID: 767377157649324197, guid: 4fcf54ed606be5f439b9dd0a5cfeb7c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133911261601164902, guid: 4fcf54ed606be5f439b9dd0a5cfeb7c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3774853256199825772, guid: 4fcf54ed606be5f439b9dd0a5cfeb7c9, type: 3}
       propertyPath: m_BoundingSphereOverride.y

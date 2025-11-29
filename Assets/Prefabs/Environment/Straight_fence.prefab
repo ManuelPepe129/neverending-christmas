@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Straight_fence
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7310694213ccf0a4a80c096978d7e46e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
