@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
     private const float EnemyIncrementFactor = 1.55f;
     public int enemiesSpawned = 0;
 
+    //Timer management
+    [SerializeField] private AudioSource timerAudioSource;
+    private bool _timerSoundPlayed = false;
+    private float _timerSoundDuration = 13;
+
     private void Start()
     {
         StartGame();
@@ -83,6 +88,14 @@ public class GameManager : MonoBehaviour
         while (_currentTime <= _dayDuration)
         {
             _currentTime += Time.deltaTime;
+            if(_currentTime >= (_dayDuration-_timerSoundDuration))
+            {
+                if (!_timerSoundPlayed)
+                {
+                    _timerSoundPlayed = true;
+                    timerAudioSource.Play();
+                }
+            }
             yield return null;
         }
 
