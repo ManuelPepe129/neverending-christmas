@@ -20,6 +20,7 @@ public class ThrowingWeapon : MonoBehaviour
             _playerTransform = player.transform;
         }
         _targetPosition = _playerTransform.position + _playerTransform.forward * throwDistance;
+        _targetPosition.y = transform.position.y;
         _goingBack = false;
     }
 

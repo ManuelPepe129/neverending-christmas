@@ -27,8 +27,10 @@ public class Collectable : MonoBehaviour
 
     private IEnumerator TriggerSequence()
     {
-        collectedEffect.Play();
-        _audioSource.Play();
+        if (collectedEffect)
+            collectedEffect.Play();
+        if (_audioSource)
+            _audioSource.Play();
         _gameManager.OnGiftCollected();
 
         yield return new WaitForSeconds(0.5f);
