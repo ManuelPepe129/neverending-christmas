@@ -684,6 +684,7 @@ GameObject:
   - component: {fileID: 2523199579260213095}
   - component: {fileID: 2516048811139958721}
   - component: {fileID: 3146089049764388399}
+  - component: {fileID: 8135975947587970522}
   m_Layer: 0
   m_Name: Player_SantaClaus
   m_TagString: Player
@@ -818,6 +819,28 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   invulnerabilityTime: 1.5
+--- !u!95 &8135975947587970522
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686733992200367160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 2fd08c7aca0bf8d49b907de4728940d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: c5b5f22c5bca99e49a6753585d3c5193, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4709473020430492643
 GameObject:
   m_ObjectHideFlags: 0

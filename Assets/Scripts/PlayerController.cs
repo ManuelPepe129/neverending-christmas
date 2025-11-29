@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int Walk = Animator.StringToHash("Walk");
+    private static readonly int Idle = Animator.StringToHash("Idle");
+    private static readonly int Attack1 = Animator.StringToHash("Attack");
     [SerializeField] private float moveSpeed = 2.0f;
     private float _currentSpeed = 1.0f;
 
@@ -19,12 +22,14 @@ public class PlayerController : MonoBehaviour
     private bool _canAttack = true;
     
     private HealthComponent _healthComponent;
+    private Animator _animator;
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
         _playerControls = new InputSystem_Actions();
         _healthComponent = GetComponent<HealthComponent>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -84,6 +89,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        _animator.SetTrigger(_movement != Vector3.zero ? Walk : Idle);
         _rigidBody.MovePosition(_rigidBody.position + _movement * (_currentSpeed * Time.fixedDeltaTime));
     }
 
@@ -99,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDeath()
     {
-        throw new NotImplementedException("Player OnDeath not implemented");
+        
     }
 
     private void Attack()
@@ -109,6 +115,7 @@ public class PlayerController : MonoBehaviour
             _canAttack = false;
             // Spawn weapon prefab
             var weaponSpawnPosition = new Vector3(_rigidBody.position.x, _rigidBody.position.y + 0.86f, _rigidBody.position.z);
+            _animator.SetTrigger(Attack1);
             Instantiate(weaponPrefab, weaponSpawnPosition, _rigidBody.rotation);
             StartCoroutine(AttackCooldownRoutine());
         }
