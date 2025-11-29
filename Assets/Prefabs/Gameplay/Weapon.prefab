@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4174191027982678424}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142,8 +142,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35095382, y: 1.12905, z: 0.1270144}
-  m_Center: {x: 0.089196324, y: 0.045547128, z: 0}
+  m_Size: {x: 0.65, y: 0.2, z: 1.5}
+  m_Center: {x: -0.21, y: 0, z: -0.02}
 --- !u!95 &8622101993597133583
 Animator:
   serializedVersion: 7
