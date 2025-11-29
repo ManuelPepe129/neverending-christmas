@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: streetlamp_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 01dfa7d3d400e854bb5b4e2037598eec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
