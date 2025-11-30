@@ -13,14 +13,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidBody;
     private Vector3 _movement;
     private InputSystem_Actions _playerControls;
-    
+
     private Camera _mainCamera;
 
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private float attackCooldown = 3;
     private bool _attackButtonDown = false;
     private bool _canAttack = true;
-    
+
     private HealthComponent _healthComponent;
     private Animator _animator;
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         // Setup Attack controls
         _playerControls.Player.Attack.started += _ => StartAttacking();
         _playerControls.Player.Attack.canceled += _ => StopAttacking();
-        
+
         _mainCamera = FindFirstObjectByType<Camera>();
     }
 
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         RotateTowardsMouse();
         Move();
     }
-    
+
     private void RotateTowardsMouse()
     {
         Vector2 mouseScreenPos = _playerControls.Player.Rotate.ReadValue<Vector2>();
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             _rigidBody.MoveRotation(targetRot);
         }
     }
-    
+
     private void GetPlayerInput()
     {
         var movement2D = _playerControls.Player.Move.ReadValue<Vector2>();
@@ -105,7 +105,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnDeath()
     {
-        
     }
 
     private void Attack()
@@ -114,7 +113,8 @@ public class PlayerController : MonoBehaviour
         {
             _canAttack = false;
             // Spawn weapon prefab
-            var weaponSpawnPosition = new Vector3(_rigidBody.position.x, _rigidBody.position.y + 0.86f, _rigidBody.position.z);
+            var weaponSpawnPosition =
+                new Vector3(_rigidBody.position.x, _rigidBody.position.y + 0.86f, _rigidBody.position.z);
             _animator.SetTrigger(Attack1);
             Instantiate(weaponPrefab, weaponSpawnPosition, _rigidBody.rotation);
             StartCoroutine(AttackCooldownRoutine());
@@ -135,13 +135,5 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         _canAttack = true;
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Enemy") && _healthComponent != null)
-        {
-            _healthComponent.TakeDamage(10);
-        }
     }
 }

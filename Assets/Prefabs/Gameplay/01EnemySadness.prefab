@@ -12,12 +12,20 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -168130207984646708, guid: 128fe6939239c054f8d26f5b695eb16b, type: 3}
+    - target: {fileID: 2714700684233118711, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3971976483952842919, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
       propertyPath: m_Name
       value: 01EnemySadness
       objectReference: {fileID: 0}
     - target: {fileID: 3971976483952842919, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250106828074846523, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6203944574017678707, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
@@ -60,6 +68,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026619190048391243, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Height
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026619190048391243, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026619190048391243, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Center.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037176076746770856, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037176076746770856, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
       propertyPath: m_ReceiveGI
       value: 2
@@ -80,6 +104,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: 7da05085dc89f184796211c389a168b6, type: 2}
+    - target: {fileID: 7341077745853708946, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341077745853708946, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023702228532509257, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
