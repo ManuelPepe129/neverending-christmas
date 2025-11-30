@@ -3,7 +3,57 @@ guid: c2d493ec17518ac4e82919de0596041a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass_darken
+    second: {fileID: 2100000, guid: 383e65e43deeac94cb088c5dc5a0d430, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamp_glass
+    second: {fileID: 2100000, guid: 6ef45ec673b2d7d4c9544de34f0bdea1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves
+    second: {fileID: 2100000, guid: f60c6b55ed74bec44ad8928bcff09a27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves_2
+    second: {fileID: 2100000, guid: 6502d110f3af0a84ba2b421e24edd209, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metall
+    second: {fileID: 2100000, guid: 75291e45de322b646ab2a328ed5804f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Snow
+    second: {fileID: 2100000, guid: 57220ff5e0319ea4cbfa503de7175042, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood_house
+    second: {fileID: 2100000, guid: b01f77c317f683149a4abe86bcb3df63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood_house2
+    second: {fileID: 2100000, guid: 5140c6e5a9811114d820519925179c53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold_candy
+    second: {fileID: 2100000, guid: 9d6ddded1f12cbe4c90627c742157c55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red_candy
+    second: {fileID: 2100000, guid: db845451963832246a34348e7d692a82, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

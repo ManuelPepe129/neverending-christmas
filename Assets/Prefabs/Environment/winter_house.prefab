@@ -69,8 +69,16 @@ PrefabInstance:
       value: winter_house
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c2d493ec17518ac4e82919de0596041a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2d493ec17518ac4e82919de0596041a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2d493ec17518ac4e82919de0596041a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
