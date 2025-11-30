@@ -24,6 +24,18 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4250106828074846523, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11050263355021133}
+    - target: {fileID: 4250106828074846523, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBossDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250106828074846523, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+      propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EnemyController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6203944574017678707, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7
@@ -113,3 +125,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+--- !u!114 &11050263355021133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7341077745853708946, guid: 5957d94c174a15e4f87f17087d285f8e, type: 3}
+  m_PrefabInstance: {fileID: 7334109206876909023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed17db244727b784588008a6d3eb37e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
