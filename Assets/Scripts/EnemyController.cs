@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionStay(Collision other)
     {
         if (_isDead) return;
         if (other.gameObject.CompareTag("Player"))
