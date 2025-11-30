@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float currentHealth;
+    private float currentHealth;
     [SerializeField] private UnityEvent<float> damageEvent;
     [SerializeField] private UnityEvent deathEvent;
 
@@ -14,7 +14,6 @@ public class HealthComponent : MonoBehaviour
 
     private bool _isInvulnerable = false;
     public bool IsInvulnerable => _isInvulnerable;
-    public float CurrentHealth => currentHealth;   // ← ADD THIS
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -34,13 +33,12 @@ public class HealthComponent : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
 
         // prevent damage if currently invulnerable
 
         if (_isInvulnerable) {
-            print("now invulnerable");
             return;
         }
 
@@ -77,7 +75,7 @@ public class HealthComponent : MonoBehaviour
             StartCoroutine(InvulnerabilityRoutine(invulnerabilityTime));
     }
 
-    public void ActivateInvulnerability(float duration)
+    private void ActivateInvulnerability(float duration)
     {
         StartCoroutine(InvulnerabilityRoutine(duration));
     }
