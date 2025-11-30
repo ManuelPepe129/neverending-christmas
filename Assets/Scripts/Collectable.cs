@@ -10,6 +10,7 @@ public class Collectable : MonoBehaviour
 
     private GameManager _gameManager;
     
+    private bool isPendingDestroy = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -19,8 +20,9 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && _gameManager != null)
+        if (other.gameObject.CompareTag("Player") && _gameManager != null && !isPendingDestroy)
         {
+            isPendingDestroy = true;
             StartCoroutine(TriggerSequence());
         }
     }
