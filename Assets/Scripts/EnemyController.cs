@@ -25,6 +25,15 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void OnBossDeath()
+    {
+        var gameManager = GameObject.FindFirstObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.OnLevelCompleted();
+        }
+    }
+
     void OnCollisionStay(Collision other)
     {
         if (_isDead) return;
