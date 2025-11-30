@@ -139,7 +139,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Enemy") && _healthComponent != null)
         {
             _healthComponent.TakeDamage(10);
