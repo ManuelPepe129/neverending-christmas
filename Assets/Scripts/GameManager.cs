@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,7 +87,7 @@ public class GameManager : MonoBehaviour
         while (_currentTime <= _dayDuration)
         {
             _currentTime += Time.deltaTime;
-            if(_currentTime >= (_dayDuration-_timerSoundDuration))
+            if (_currentTime >= (_dayDuration - _timerSoundDuration))
             {
                 if (!_timerSoundPlayed)
                 {
@@ -96,6 +95,7 @@ public class GameManager : MonoBehaviour
                     timerAudioSource.Play();
                 }
             }
+
             yield return null;
         }
 
@@ -106,20 +106,17 @@ public class GameManager : MonoBehaviour
     {
         _giftsCollected++;
 
-        // TODO: empowerment
-
-        _numberOfEnemiesToSpawn = Mathf.RoundToInt(EnemyBaseNumber * Mathf.Pow(EnemyIncrementFactor, _giftsCollected));
-        SpawnEnemies();
-
         if (_giftsCollected == _numberOfGiftsToSpawn)
         {
-            SpawnBossWave();
+            _numberOfEnemiesToSpawn = 1;
         }
-    }
+        else
+        {
+            _numberOfEnemiesToSpawn =
+                Mathf.RoundToInt(EnemyBaseNumber * Mathf.Pow(EnemyIncrementFactor, _giftsCollected));
+        }
 
-    private void SpawnBossWave()
-    {
-        throw new NotImplementedException("SpawnBossWave not implemented yet.");
+        SpawnEnemies();
     }
 
     public void OnPlayerDeath()
@@ -133,8 +130,7 @@ public class GameManager : MonoBehaviour
 
     public void OnLevelCompleted()
     {
-        // TODO: Play Win audio
-        StopCoroutine(_dayTimerCoroutine);
+        StopAllCoroutines();
         Time.timeScale = 0; // Freeze the game
         // Load Win Scene
         PlayerPrefs.SetInt("GiftsCollected", _giftsCollected);
@@ -151,7 +147,7 @@ public class GameManager : MonoBehaviour
         return _dayDuration - _currentTime;
     }
 
-    private IEnumerator LoadSceneCoroutine(int sceneBuildIndex)
+    private static IEnumerator LoadSceneCoroutine(int sceneBuildIndex)
     {
         var asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);
         while (asyncLoad is { isDone: false })
