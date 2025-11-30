@@ -34,6 +34,7 @@ public class ThrowingWeapon : MonoBehaviour
         }
         
         var targetPosition = _goingBack ? _playerTransform.position : _targetPosition;
+        _targetPosition.y = transform.position.y;
         // TODO: rotate player according to mouse click position
         transform.position = Vector3.MoveTowards(transform.position, targetPosition,throwSpeed * Time.deltaTime);
 
